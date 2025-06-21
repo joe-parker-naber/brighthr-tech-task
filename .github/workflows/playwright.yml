@@ -15,7 +15,9 @@ jobs:
         with:
           node-version: lts/*
       - name: set environment variables
-        run: echo "BRIGHTHR_USER_ID=${{ secrets.BRIGHTHR_USER_ID }}" >> $GITHUB_ENV && echo "BRIGHTHR_USER_PASSWORD=${{ secrets.BRIGHTHR_USER_PASSWORD }}" >> $GITHUB_ENV
+        env:
+          BRIGHTHR_USER_ID: ${{ secrets.BRIGHTHR_USER_ID }}
+          BRIGHTHR_USER_PASSWORD: ${{ secrets.BRIGHTHR_USER_PASSWORD }}
       - name: Install dependencies
         run: npm ci
       - name: Install Playwright Browsers
