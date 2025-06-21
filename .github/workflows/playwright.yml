@@ -5,13 +5,13 @@ on:
   pull_request:
     branches: [main, master]
 
-env:
-  BRIGHTHR_USER_ID: ${ { secrets.BRIGHTHR_USER_ID } }
-  BRIGHTHR_USER_PASSWORD: ${ { secrets.BRIGHTHR_USER_PASSWORD } }
-
 jobs:
+  env:
+    BRIGHTHR_USER_ID: ${ { secrets.BRIGHTHR_USER_ID } }
+    BRIGHTHR_USER_PASSWORD: ${ { secrets.BRIGHTHR_USER_PASSWORD } }
+
   test:
-    timeout-minutes: 60
+    timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
