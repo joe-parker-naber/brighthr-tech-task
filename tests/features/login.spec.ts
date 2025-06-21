@@ -11,8 +11,6 @@ test.describe("Login Page", () => {
 
     await loginPage.login(username, password);
 
-    // Example assertion: check for a successful login indicator
-
     await expect(page).toHaveURL("https://sandbox-app.brighthr.com/dashboard", {
       timeout: 20000,
     });
