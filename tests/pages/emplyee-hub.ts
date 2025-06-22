@@ -1,5 +1,4 @@
 import { Page, Locator, expect } from "@playwright/test";
-import { url } from "inspector";
 
 export class EmployeeHubPage {
   readonly page: Page;
@@ -8,7 +7,6 @@ export class EmployeeHubPage {
   readonly employeeEdit: Locator;
   readonly pageTitle: Locator;
   readonly employeeListTitle: Locator;
-  readonly employeeListItem: Locator;
   readonly addEmployeeForm: Locator;
   readonly addEmployeeFormFirstName: Locator;
   readonly addEmployeeFormLastName: Locator;
@@ -37,9 +35,6 @@ export class EmployeeHubPage {
     this.employeeListTitle = page.locator("h3", {
       hasText: "Employees",
     });
-    this.employeeListItem = page.locator(
-      "div.grid.grid-cols-1.gap-8.py-6.mt-6.xl\\:grid-cols-3.md\\:grid-cols-2 > div"
-    );
     // the following element requires a test ID, this locator is work around until one can be added
     this.addEmployeeForm = page.locator(
       "div.flex.flex-col.relative.m-4.h-auto.transition-all.bg-white.shadow.rounded-lg.max-h-\\[90\\%\\].w-\\[900px\\].overflow-x-hidden.overflow-y-auto"
@@ -79,6 +74,10 @@ export class EmployeeHubPage {
     this.returnToHubButton = page.getByRole("button", {
       name: "Return to employee hub",
     });
+  }
+
+  async goto() {
+    await this.page.goto("/employee-hub");
   }
 
   async addEmployee() {
