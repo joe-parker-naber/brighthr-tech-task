@@ -60,7 +60,9 @@ One way to handle this brittleness would be to seed the test data at the start o
 
 As we are testing that the UI is behaving properly based on the correct data being present, we do not specifically care about the API response itself in this test, just that a request is made and that the application responds to correct data being returned and the user flow is correct and functional. This is however predicated on there being sufficient integration and unit tests closer to the code that assert that the APIs are functioning as expected (Contract testing is another avenue to explore)
 
-at a basic level at the moment though, the brittleness is being handled and there should be little to no risk in this case due to the simple nature of the test.
+It is also worth calling out that the fact the test always uses the same user further exacerbates brittleness, particularly when running the tests in parallel, you can see this when you run the tests in the terminal without focussing on a single browser. again this issue is solved with the same steps as mentioned above, should there be a need to make the tests run in parallel then this would have to be resolved but is generally a non issue until the test suit grows and the number of specs is increased.
+
+at a basic level at the moment though, the brittleness is being handled and there should be little risk in this case due to the simple nature of the test being run and there being no need to run in parallel at this time.
 
 ## Feedback and further discussion points
 
@@ -87,6 +89,13 @@ While the core test case is straightforward and quick to implement, a few challe
 - The performance issues mainly affected automated testing speed, not the user experience. Automation often exposes timing issues that are less noticeable to end users.
 
 ## Overall, improving selector consistency and addressing performance bottlenecks would make automated testing more efficient and reliable.
+
+## Improvments/suggestions
+
+- Caching the playwright install should be the first major improvement, while this was added to the workflow, there is currently a bug with webpack that causes the browser to be unable to open.
+  there are workarounds wherein you would install each browser in turn and check the cache for each browser at a time but this is quite involved and brings no value at this scale so for now the workflow changes are commented out
+- Intercepts/mocking should be something that should be improved too, this would vastly reduce brittleness and reduce test flake, especially as the suit grows
+- Consistent test IDs in the application itself so that we do not have to rely on selectors using just div, classes of element text
 
 ## Troubleshooting
 

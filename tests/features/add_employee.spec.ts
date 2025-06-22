@@ -26,13 +26,10 @@ test.describe("Employees hub", () => {
     await expect(employeeHub.pageTitle).toBeVisible();
     await expect(employeeHub.employeeListTitle).toBeVisible();
     await expect(employeeHub.employeeListTitle).toContainText("(2)");
-    // await employeeHub.deleteEmployee();
-    // await expect(employeeHub.pageTitle).toBeVisible();
   });
 });
 test.afterEach(async ({ page }) => {
   const employeeHub = new EmployeeHubPage(page);
-  //   await employeeHub.goto();
   await employeeHub.deleteEmployee();
   await expect(employeeHub.pageTitle).toBeVisible();
 });
