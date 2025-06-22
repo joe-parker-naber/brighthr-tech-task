@@ -44,7 +44,7 @@ To run the tests locally, use the following commands:
 
 ## Notes
 
-- This test suite was built to test thr following scenario:
+- This test suite was built to test the following scenario:
 
 1. Navigate to the employee tab on the left-hand side of the panel and add an employee by filling in all the fields, including optional ones.
 
