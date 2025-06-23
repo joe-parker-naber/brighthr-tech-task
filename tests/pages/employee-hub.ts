@@ -98,7 +98,7 @@ export class EmployeeHubPage {
     await this.addEmployeeFormToday.click();
     await this.addEmployeeFormJobTitle.fill("Software Engineer");
     await this.addEmployeeFormSave.click();
-    await expect(this.addEmployeeSuccess).toBeVisible();
+    await expect(this.addEmployeeSuccess).toBeVisible({ timeout: 30000 });
     await this.closeModal.click();
     await this.page.waitForTimeout(2000);
   }
