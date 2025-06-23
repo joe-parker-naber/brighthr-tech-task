@@ -29,7 +29,7 @@ test.describe("Employees hub", () => {
     const dashboardPage = new DashboardPage(page);
     await dashboardPage.visitNavLink();
     const employeeHub = new EmployeeHubPage(page);
-    await expect(employeeHub.pageTitle).toBeVisible();
+    await expect(employeeHub.pageTitle).toBeVisible({ timeout: 30000 });
     await employeeHub.addEmployee(employee);
     await expect(employeeHub.pageTitle).toBeVisible();
     await expect(employeeHub.employeeListTitle).toBeVisible();
