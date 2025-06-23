@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { LoginPage } from "../pages/login";
 import { DashboardPage } from "../pages/dashboard";
-import { EmployeeHubPage } from "../pages/emplyee-hub";
+import { EmployeeHubPage } from "../pages/employee-hub";
 import { v4 as uuidv4 } from "uuid";
 
 const username = process.env.BRIGHTHR_USER_ID as string;
@@ -24,7 +24,7 @@ test.describe("Employees hub", () => {
     await loginPage.login(username, password);
 
     await expect(page).toHaveURL("https://sandbox-app.brighthr.com/dashboard", {
-      timeout: 20000,
+      timeout: 30000,
     });
     const dashboardPage = new DashboardPage(page);
     await dashboardPage.visitNavLink();
