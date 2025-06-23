@@ -30,9 +30,11 @@ test.describe("Employees hub", () => {
     await dashboardPage.visitNavLink();
     const employeeHub = new EmployeeHubPage(page);
     await expect(employeeHub.pageTitle).toBeVisible({ timeout: 30000 });
+    await employeeHub.findEmployee("Joe");
     await employeeHub.addEmployee(employee);
     await expect(employeeHub.pageTitle).toBeVisible();
     await expect(employeeHub.employeeListTitle).toBeVisible();
+    await employeeHub.findEmployee("Joe");
     await employeeHub.findEmployee(employee.firstName);
   });
 });
