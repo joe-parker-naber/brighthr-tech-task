@@ -60,7 +60,7 @@ One way to handle this brittleness would be to seed the test data at the start o
 
 As we are testing that the UI is behaving properly based on the correct data being present, we do not specifically care about the API response itself in this test, just that a request is made and that the application responds to correct data being returned and the user flow is correct and functional. This is however predicated on there being sufficient integration and unit tests closer to the code that assert that the APIs are functioning as expected (Contract testing is another avenue to explore)
 
-It is also worth calling out that the fact the test always uses the same user further exacerbates brittleness, particularly when running the tests in parallel, you can see this when you run the tests in the terminal without focussing on a single browser. again this issue is solved with the same steps as mentioned above, should there be a need to make the tests run in parallel then this would have to be resolved but is generally a non issue until the test suit grows and the number of specs is increased.
+It is also worth calling out that the fact the test always uses the same user further exacerbates brittleness, particularly when running the tests in parallel with multiple projects (webpack, firefox and chromium), you can see this when you run the tests in the terminal without focussing on a single browser. Again this issue is solved with the same steps as mentioned above, should there be a need to make the tests run in parallel then this would have to be resolved but is generally a non issue until the test suit grows and the number of specs is increased.
 
 at a basic level at the moment though, the brittleness is being handled and there should be little risk in this case due to the simple nature of the test being run and there being no need to run in parallel at this time.
 
@@ -96,6 +96,7 @@ While the core test case is straightforward and quick to implement, a few challe
   there are workarounds wherein you would install each browser in turn and check the cache for each browser at a time but this is quite involved and brings no value at this scale so for now the workflow changes are commented out
 - Intercepts/mocking should be something that should be improved too, this would vastly reduce brittleness and reduce test flake, especially as the suit grows
 - Consistent test IDs in the application itself so that we do not have to rely on selectors using just div, classes of element text
+- Reporting into a dashboard like Currents is also a change that should be considered and added in the future, this increases visibility of the health of the application and can be access by devs and stakeholders for a more holistic view of test coverage
 
 ## Troubleshooting
 
@@ -106,9 +107,5 @@ If you encounter issues running the tests, consider the following:
 - If tests are failing due to selectors, inspect the application and update the selectors in your page models as needed.
 - For network-related errors or timeouts, verify your internet connection and consider increasing Playwright's timeout settings.
 - Review Playwright's [documentation](https://playwright.dev/docs/intro) for further guidance.
-
-## Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request if you have suggestions or improvements.
 
 ---
