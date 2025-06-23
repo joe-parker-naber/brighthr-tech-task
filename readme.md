@@ -90,7 +90,7 @@ While the core test case is straightforward and quick to implement, a few challe
 
 ## Overall, improving selector consistency and addressing performance bottlenecks would make automated testing more efficient and reliable.
 
-## Improvments/suggestions
+## Improvements/suggestions
 
 - Caching the playwright install should be the first major improvement, while this was added to the workflow, there is currently a bug with webpack that causes the browser to be unable to open.
   there are workarounds wherein you would install each browser in turn and check the cache for each browser at a time but this is quite involved and brings no value at this scale so for now the workflow changes are commented out
