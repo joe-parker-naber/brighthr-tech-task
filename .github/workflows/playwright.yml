@@ -44,6 +44,7 @@ jobs:
         env:
           BRIGHTHR_USER_ID: ${{ secrets.BRIGHTHR_USER_ID }}
           BRIGHTHR_USER_PASSWORD: ${{ secrets.BRIGHTHR_USER_PASSWORD }}
+          BRIGHTHR_USER_NAME: ${{ secrets.BRIGHTHR_USER_NAME }}
         run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
