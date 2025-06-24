@@ -9,6 +9,8 @@ The pre-created users' login details are stored in GitHub Secrets and will be us
 1. Register a user manually.
 2. Save the credentials into a `.env` file at the root.
 
+the details required are the users login id (email) the password used to setup the account and the first name of the user
+
 There is a `.env.example` file in the root that provides the required keys. For ease:
 
 - Copy this file.

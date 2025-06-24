@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const username = process.env.BRIGHTHR_USER_ID as string;
 const password = process.env.BRIGHTHR_USER_PASSWORD as string;
+const employeeName = process.env.BRIGHTHR_USER_NAME as string;
 let employee = {
   firstName: uuidv4(),
   lastName: "User",
@@ -30,11 +31,11 @@ test.describe("Employees hub", () => {
     await dashboardPage.visitNavLink();
     const employeeHub = new EmployeeHubPage(page);
     await expect(employeeHub.pageTitle).toBeVisible({ timeout: 30000 });
-    await employeeHub.findEmployee("Joe");
+    await employeeHub.findEmployee(employeeName);
     await employeeHub.addEmployee(employee);
     await expect(employeeHub.pageTitle).toBeVisible();
     await expect(employeeHub.employeeListTitle).toBeVisible();
-    await employeeHub.findEmployee("Joe");
+    await employeeHub.findEmployee(employeeName);
     await employeeHub.findEmployee(employee.firstName);
   });
 });
